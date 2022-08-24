@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: kubia
+ #namespace: kubia-namespace
+spec:
+ replicas: 3
+ selector:
+   matchLabels:
+     app: kubia
+ template:
+  metadata:
+   labels:
+    app: kubia
+  spec:
+    containers:
+    - image: kshounish/nodeapp:latest
+      name: kubia
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 8080
+    terminationGracePeriodSeconds: 0
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 0
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 0
+  

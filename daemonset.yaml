@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+ name: kubia-ds
+ #namespace: kubia-namespace
+spec:
+ selector:
+   matchLabels:
+     app: kubia-ds
+ template:
+  metadata:
+   labels:
+    app: kubia-ds
+  spec:
+    nodeSelector:
+      #disk: ssd
+    containers:
+    - image: kshounish/nodeapp:latest
+      name: kubia-ds
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 8080
+
