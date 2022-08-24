@@ -8,13 +8,13 @@ metadata:
 spec:
 # Below describes the containers that will run behind  the pod  which includes Container image,name,ports to be used by container. for  now its just 1 container
   containers:
-  - image: kshounish/nodeapp:latest
+  - image: kshounish/node_app_kubernetes:1
     name: nodeapp-container
     ports:
     - protocol: TCP
     #targetPort: 8081
       containerPort: 8081
-  - image: kshounish/nodeapp:latest
+  - image: kshounish/node_app_kubernetes:1
     name: kubia-container
     ports:
     - protocol: TCP
