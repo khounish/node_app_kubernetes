@@ -14,7 +14,7 @@ spec:
     app: kubia
   spec:
     containers:
-    - image: kshounish/nodeapp:latest
+    - image: kshounish/node_app_kubernetes:1
       name: kubia
       ports:
         - containerPort: 8080
