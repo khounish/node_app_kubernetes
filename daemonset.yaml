@@ -15,7 +15,7 @@ spec:
     nodeSelector:
       #disk: ssd
     containers:
-    - image: kshounish/nodeapp:latest
+    - image: kshounish/node_app_kubernetes:1
       name: kubia-ds
       ports:
         - containerPort: 8080
